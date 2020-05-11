@@ -1,12 +1,7 @@
 CC=g++
 
-HEADERS = $(wildcard *.h)
-
-main: main.o scene.h
-	$(CC) main.o -o main  -lGL -lglut -lGLU -lm
-
-%.o : %.cpp {HEADERS}
-	g++  $<  -lGL -lglut -lGLU -lm -o $@
+main: scene.h main.cpp
+	$(CC) main.cpp -o main  -lGL -lglut -lGLU -lm
 
 clean:
 	rm -rf *.o
