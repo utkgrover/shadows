@@ -1,11 +1,17 @@
 #include "scene.h"
 
+int angle=0;
+
 void display(){
-	glClearColor(0.0f,0.0f,0.0f,0.0f);
+	angle+=2;
+	glClearColor(1.0f,1.0f,1.0f,1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity(); //Loads identity matrix to reset drawing location 
 
+	drawscene(angle);
+
 	glutSwapBuffers();
+	glutPostRedisplay();
 }
 
 void reshape(int width,int height){
@@ -22,10 +28,10 @@ void keypress(unsigned char key,int x,int y){
 
 int main(int argc, char** argv){
     glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(500, 500);
 	glutCreateWindow("Display Window");
- 
+	getsettings();//placed skeptical funcs here
     glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutKeyboardFunc(keypress);
