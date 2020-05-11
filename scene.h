@@ -3,11 +3,24 @@
 
 #include<GL/glut.h>
 
+//do lighting and blending go together ?
+
 void getsettings(){
-    glEnable(GL_COLOR_MATERIAL);//to keep the material same as the colour when lightening is enabled 
+    //to keep the material same as the colour when lightening is enabled
+    glEnable(GL_COLOR_MATERIAL); 
+
 	//check if blending is really needed
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
+    //enable depth 
+    glClearDepth(1.0f);
+    glEnable(GL_DEPTH_TEST);
+
+    //enable lighting 
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+
 }
 
 void drawscene(int angle){
@@ -22,7 +35,7 @@ void drawscene(int angle){
     // glColor4f(0.0f,1.0f,0.0f,1.0f);
     // glutSolidTorus(0.05, 0.13, 50, 50);
 
-    glColor4f(1.0f,0.0f,0.0f,0.5f);
+    glColor4f(1.0f,0.0f,0.0f,1.0f);
     glutSolidCube(2.0f);
 }
 
