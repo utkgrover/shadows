@@ -3,8 +3,8 @@
 int angle=0;
 
 void display(){
-	angle+=2;
-	glClearColor(1.0f,1.0f,1.0f,1.0f);
+	angle+=1;
+	glClearColor(0.0f,0.0f,0.0f,1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity(); //Loads identity matrix to reset drawing location 
 
@@ -24,6 +24,8 @@ void reshape(int width,int height){
 
 void keypress(unsigned char key,int x,int y){
 	if(key=='q') exit(0);
+	if(key=='s') spectacularfunc();
+	if(key=='d') diffusefunc();
 }
 
 int main(int argc, char** argv){
