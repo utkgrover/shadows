@@ -60,6 +60,8 @@ void getsettings(){
     glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuseLight);
     glLightfv(GL_LIGHT0,GL_AMBIENT,ambientLight);
     glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+
+    glShadeModel(GL_SMOOTH);
 }
 
 void drawscene(int angle){
