@@ -2,21 +2,17 @@
 
 int angle=0;
 
+
 void display(){
-	angle+=1;
-	glClearColor(0.0f,0.0f,0.0f,1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity(); //Loads identity matrix to reset drawing location 
+	displayFunction();
+}
 
-	gluLookAt (0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-
-	drawscene(angle);
-
-	glutSwapBuffers();
-	glutPostRedisplay();
+void init(){
+	initialSettings();
 }
 
 void reshape(int width,int height){
+	//winWidth=width;winHeight=height;
 	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -26,16 +22,17 @@ void reshape(int width,int height){
 
 void keypress(unsigned char key,int x,int y){
 	if(key=='q') exit(0);
-	if(key=='s') spectacularfunc();
-	if(key=='d') diffusefunc();
+	//if(key=='s') spectacularfunc();
+	//if(key=='d') diffusefunc();
 }
 
 int main(int argc, char** argv){
     glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-	glutInitWindowSize(500, 500);
+	glutInitWindowSize(500,500);
 	glutCreateWindow("Display Window");
-	getsettings();//placed skeptical funcs here
+	std::cout<<"debug0"<<std::endl;
+	init();//placed skeptical funcs here
     glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutKeyboardFunc(keypress);
