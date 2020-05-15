@@ -13,7 +13,7 @@ GLuint winWidth=500,winHeight=500;
 
 GLfloat cameraProjection[16]={0.0f};
 GLfloat cameraView[16]={0.0f};
-GLfloat cameraPosition[]={1.0f,1.0f,1.0f};
+GLfloat cameraPosition[]={0.0f, 1.8f,-3.5f};
 
 GLfloat lightProjection[16]={0.0f};
 GLfloat lightView[16]={0.0f};
@@ -106,7 +106,6 @@ void initialSettings(){
 
 	glPopMatrix();
 
-    std::cout<<"debug1"<<std::endl;
 }
 
 void displayFunction(){
@@ -159,27 +158,31 @@ void displayFunction(){
     glLightfv(GL_LIGHT1, GL_DIFFUSE, white);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, white);
 
-    std::cout<<"debug3"<<std::endl;
+    // GLfloat* temp;
+    // multiplyMatrix(lightProjection,lightView,&temp);
 
-    GLfloat* temp = multiplyMatrix(lightProjection,lightView);
-    GLfloat* textureMatrix = multiplyMatrix(textureBias , temp);
-
-    std::cout<<"debug4"<<std::endl;
+    GLfloat *temp,*textureMatrix,*row;
+    multiplyMatrix(textureBias , lightProjection , &temp);
+    multiplyMatrix(temp , lightView , &textureMatrix);
 
     glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-	glTexGenfv(GL_S,GL_EYE_PLANE, getRow(0,textureMatrix));
+    getRow(0,textureMatrix,&row);
+	glTexGenfv(GL_S,GL_EYE_PLANE, row);
 	glEnable(GL_TEXTURE_GEN_S);
 
     glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-	glTexGenfv(GL_T, GL_EYE_PLANE, getRow(1,textureMatrix));
+    getRow(1,textureMatrix,&row);
+	glTexGenfv(GL_T, GL_EYE_PLANE,row);
 	glEnable(GL_TEXTURE_GEN_T);
 
 	glTexGeni(GL_R, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-	glTexGenfv(GL_R, GL_EYE_PLANE,getRow(2,textureMatrix) );
+    getRow(2,textureMatrix,&row);
+	glTexGenfv(GL_R, GL_EYE_PLANE,row );
 	glEnable(GL_TEXTURE_GEN_R);
 
 	glTexGeni(GL_Q, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-	glTexGenfv(GL_Q, GL_EYE_PLANE,getRow(3,textureMatrix) );
+    getRow(3,textureMatrix,&row);
+	glTexGenfv(GL_Q, GL_EYE_PLANE,row);
 	glEnable(GL_TEXTURE_GEN_Q);
 
     glBindTexture(GL_TEXTURE_2D, texture);
@@ -212,33 +215,32 @@ void displayFunction(){
 	glutPostRedisplay();
 }
 
-GLfloat* multiplyMatrix(GLfloat* a,GLfloat* b){
-    GLfloat ans[16]={0.0f};
-    ans[0]=a[0]*b[0]+a[1]*b[4]+a[2]*b[8]+a[3]*b[12];
-    ans[1]=a[0]*b[1]+a[1]*b[5]+a[2]*b[9]+a[3]*b[13];
-    ans[2]=a[0]*b[2]+a[1]*b[6]+a[2]*b[10]+a[3]*b[14];
-    ans[3]=a[0]*b[3]+a[1]*b[7]+a[2]*b[11]+a[3]*b[15];
+void multiplyMatrix(GLfloat* a,GLfloat* b,GLfloat* ans[]){
+    *ans = new GLfloat[16];
+    (*ans)[0]=a[0]*b[0]+a[1]*b[4]+a[2]*b[8]+a[3]*b[12];
+    (*ans)[1]=a[0]*b[1]+a[1]*b[5]+a[2]*b[9]+a[3]*b[13];
+    (*ans)[2]=a[0]*b[2]+a[1]*b[6]+a[2]*b[10]+a[3]*b[14];
+    (*ans)[3]=a[0]*b[3]+a[1]*b[7]+a[2]*b[11]+a[3]*b[15];
 
-    ans[4]=a[4]*b[0]+a[5]*b[4]+a[6]*b[8]+a[7]*b[12];
-    ans[5]=a[4]*b[1]+a[5]*b[5]+a[6]*b[9]+a[7]*b[13];
-    ans[6]=a[4]*b[2]+a[5]*b[6]+a[6]*b[10]+a[7]*b[14];
-    ans[7]=a[4]*b[3]+a[5]*b[7]+a[6]*b[11]+a[7]*b[15];
+    (*ans)[4]=a[4]*b[0]+a[5]*b[4]+a[6]*b[8]+a[7]*b[12];
+    (*ans)[5]=a[4]*b[1]+a[5]*b[5]+a[6]*b[9]+a[7]*b[13];
+    (*ans)[6]=a[4]*b[2]+a[5]*b[6]+a[6]*b[10]+a[7]*b[14];
+    (*ans)[7]=a[4]*b[3]+a[5]*b[7]+a[6]*b[11]+a[7]*b[15];
 
-    ans[8]=a[8]*b[0]+a[9]*b[4]+a[10]*b[8]+a[11]*b[12];
-    ans[9]=a[8]*b[1]+a[9]*b[5]+a[10]*b[9]+a[11]*b[13];
-    ans[10]=a[8]*b[2]+a[9]*b[6]+a[10]*b[10]+a[11]*b[14];
-    ans[11]=a[8]*b[3]+a[9]*b[7]+a[10]*b[11]+a[11]*b[15];
+    (*ans)[8]=a[8]*b[0]+a[9]*b[4]+a[10]*b[8]+a[11]*b[12];
+    (*ans)[9]=a[8]*b[1]+a[9]*b[5]+a[10]*b[9]+a[11]*b[13];
+    (*ans)[10]=a[8]*b[2]+a[9]*b[6]+a[10]*b[10]+a[11]*b[14];
+    (*ans)[11]=a[8]*b[3]+a[9]*b[7]+a[10]*b[11]+a[11]*b[15];
 
-    ans[12]=a[12]*b[0]+a[13]*b[4]+a[14]*b[8]+a[15]*b[12];
-    ans[13]=a[12]*b[1]+a[13]*b[5]+a[14]*b[9]+a[15]*b[13];
-    ans[14]=a[12]*b[2]+a[13]*b[6]+a[14]*b[10]+a[15]*b[14];
-    ans[15]=a[12]*b[3]+a[13]*b[7]+a[14]*b[11]+a[15]*b[15];
+    (*ans)[12]=a[12]*b[0]+a[13]*b[4]+a[14]*b[8]+a[15]*b[12];
+    (*ans)[13]=a[12]*b[1]+a[13]*b[5]+a[14]*b[9]+a[15]*b[13];
+    (*ans)[14]=a[12]*b[2]+a[13]*b[6]+a[14]*b[10]+a[15]*b[14];
+    (*ans)[15]=a[12]*b[3]+a[13]*b[7]+a[14]*b[11]+a[15]*b[15];
 
-    return ans;
 }
 
-GLfloat* getRow(int rownum ,GLfloat* matrix){
-    //already considering it to be a 4*4 matrix
-    GLfloat ans[]={matrix[4*rownum],matrix[4*rownum+1],matrix[4*rownum+2],matrix[4*rownum+3]};
-    return ans;
+void getRow(int rownum ,GLfloat* matrix,GLfloat* ans[]){
+    *ans = new GLfloat[4];
+
+    for(int i=0;i<4;i++) (*ans)[i] = matrix[4*rownum+i];
 }

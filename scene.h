@@ -67,7 +67,7 @@
 void drawscene();
 void initialSettings();
 void displayFunction();
-GLfloat* multiplyMatrix(GLfloat*,GLfloat*);
-GLfloat* getRow(int,GLfloat*);
+void multiplyMatrix(GLfloat* a,GLfloat* b,GLfloat* ans[]);
+void getRow(int rownum ,GLfloat* matrix,GLfloat* ans[]);
 
 #endif

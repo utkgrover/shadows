@@ -31,7 +31,6 @@ int main(int argc, char** argv){
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(500,500);
 	glutCreateWindow("Display Window");
-	std::cout<<"debug0"<<std::endl;
 	init();//placed skeptical funcs here
     glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
