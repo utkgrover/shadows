@@ -11,13 +11,13 @@ GLfloat shine=10.0f;
 
 GLuint winWidth=500,winHeight=500;
 
-GLfloat cameraProjection[16]={0.0f};
-GLfloat cameraView[16]={0.0f};
+GLfloat cameraProjection[16];
+GLfloat cameraView[16];
 GLfloat cameraPosition[]={0.0f, 1.8f,-3.5f};
 
-GLfloat lightProjection[16]={0.0f};
-GLfloat lightView[16]={0.0f};
-GLfloat lightPosition[]={-2.0f,-2.0f,-2.0f}; 
+GLfloat lightProjection[16];
+GLfloat lightView[16];
+GLfloat lightPosition[]={2.0f, 2.6f,-2.0f}; 
 
 GLfloat textureBias[]={0.5f, 0.0f, 0.0f, 0.0f,0.0f, 0.5f, 0.0f, 0.0f,0.0f, 0.0f, 0.5f, 0.0f,0.5f, 0.5f, 0.5f, 1.0f};
 
@@ -243,4 +243,13 @@ void getRow(int rownum ,GLfloat* matrix,GLfloat* ans[]){
     *ans = new GLfloat[4];
 
     for(int i=0;i<4;i++) (*ans)[i] = matrix[4*rownum+i];
+}
+
+void reshapeFunction(int w, int h) {
+	winWidth = w, winHeight = h;
+	glPushMatrix();
+	glLoadIdentity();
+	gluPerspective(45.0f, (float)winWidth/winHeight, 1.0f, 100.0f);
+	glGetFloatv(GL_MODELVIEW_MATRIX, cameraProjection );
+	glPopMatrix();
 }
