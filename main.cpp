@@ -1,8 +1,5 @@
 #include "scene.h"
 
-int angle=0;
-
-
 void display(){
 	displayFunction();
 }

@@ -2,3 +2,5 @@ main
 *.o
 references.txt
 test.cpp
+test 
+.vscode/

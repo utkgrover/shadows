@@ -1,13 +1,15 @@
 #include "scene.h"
+#include<iostream>
+using namespace std;
 
-unsigned int texture;
+GLuint texture;
 const int textureWidth=512;
 const int textureHeight=512;
 
-GLfloat black[]={1.0f,1.0f,1.0f};
+GLfloat black[]={0.0f,0.0f,0.0f};
 GLfloat dimwhite[]={0.1f,0.1f,0.1f};
 GLfloat white[]={1.0f,1.0f,1.0f};
-GLfloat shine=10.0f;
+GLfloat shine=30.0f;
 
 GLuint winWidth=500,winHeight=500;
 
@@ -17,11 +19,13 @@ GLfloat cameraPosition[]={0.0f, 1.8f,-3.5f};
 
 GLfloat lightProjection[16];
 GLfloat lightView[16];
-GLfloat lightPosition[]={2.0f, 2.6f,-2.0f}; 
+GLfloat lightPosition[]={2.0f, 2.6f,-3.0f,0.0f}; 
 
 GLfloat textureBias[]={0.5f, 0.0f, 0.0f, 0.0f,0.0f, 0.5f, 0.0f, 0.0f,0.0f, 0.0f, 0.5f, 0.0f,0.5f, 0.5f, 0.5f, 1.0f};
 
 void drawscene(){
+    int angle=4;
+
     glPushMatrix();
     glColor3f(0.4f, 0.3f, 0.3f);
     glTranslatef(0.0f, 0.0f, 1.0f);
@@ -33,15 +37,15 @@ void drawscene(){
     // red torus
     glColor3f(1.0f, 0.3f, 0.3f);
     glTranslatef(0.0f, 1.0f, 0.0f);
-    //glRotatef(angle, 0.0f, 1.0f, 1.0f);
+    glRotatef(angle, 0.0f, 1.0f, 1.0f);
     glPushMatrix();
     glutSolidTorus(0.1, 0.3, 50, 50);
     glPopMatrix();
 
     // yellow torus
-    //glRotatef(angle + 60, 1.0f, 0.0f, 0.0f);
+    glRotatef(angle + 60, 1.0f, 0.0f, 0.0f);
     glColor3f(1.2f, 0.8f, 0.4f);
-    glutSolidTorus(0.05, 0.13, 50, 50);
+    glutSolidCube(0.2f);
 
     glPopMatrix();
     glPopMatrix();
@@ -76,9 +80,7 @@ void initialSettings(){
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);//try gl_nearest
-
     
-
 	glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
@@ -104,8 +106,7 @@ void initialSettings(){
 	gluLookAt(lightPosition[0],lightPosition[1],lightPosition[2],0.0f,0.0f,0.0f,0.0f,1.0f,0.0f);
 	glGetFloatv(GL_MODELVIEW_MATRIX, lightView);
 
-	glPopMatrix();
-
+	glPopMatrix();    
 }
 
 void displayFunction(){
@@ -133,7 +134,6 @@ void displayFunction(){
     glShadeModel(GL_SMOOTH);
     glColorMask(1,1,1,1);
 
-
     //second draw
     glClear(GL_DEPTH_BUFFER_BIT);
 
@@ -145,7 +145,6 @@ void displayFunction(){
 
 	glViewport(0, 0, winWidth, winHeight);
 
-	// Use dim light to represent shadowed areas
 	glLightfv(GL_LIGHT1, GL_POSITION, lightPosition);
 	glLightfv(GL_LIGHT1, GL_AMBIENT,dimwhite);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, dimwhite);
@@ -154,16 +153,13 @@ void displayFunction(){
 	glEnable(GL_LIGHTING);
 
     drawscene();
-
+    
     glLightfv(GL_LIGHT1, GL_DIFFUSE, white);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, white);
 
-    // GLfloat* temp;
-    // multiplyMatrix(lightProjection,lightView,&temp);
-
     GLfloat *temp,*textureMatrix,*row;
-    multiplyMatrix(textureBias , lightProjection , &temp);
-    multiplyMatrix(temp , lightView , &textureMatrix);
+    multiplyMatrix(lightProjection , textureBias , &temp);
+    multiplyMatrix(lightView , temp , &textureMatrix);
 
     glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
     getRow(0,textureMatrix,&row);
@@ -212,7 +208,7 @@ void displayFunction(){
 
     glFinish();
 	glutSwapBuffers();
-	glutPostRedisplay();
+	//glutPostRedisplay();
 }
 
 void multiplyMatrix(GLfloat* a,GLfloat* b,GLfloat* ans[]){
@@ -242,7 +238,7 @@ void multiplyMatrix(GLfloat* a,GLfloat* b,GLfloat* ans[]){
 void getRow(int rownum ,GLfloat* matrix,GLfloat* ans[]){
     *ans = new GLfloat[4];
 
-    for(int i=0;i<4;i++) (*ans)[i] = matrix[4*rownum+i];
+    for(int i=0;i<4;i++) (*ans)[i] = matrix[4*i+rownum];
 }
 
 void reshapeFunction(int w, int h) {
