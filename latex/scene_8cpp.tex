@@ -1,0 +1,357 @@
+\hypertarget{scene_8cpp}{}\section{scene.\+cpp File Reference}
+\label{scene_8cpp}\index{scene.\+cpp@{scene.\+cpp}}
+{\ttfamily \#include \char`\"{}scene.\+h\char`\"{}}\newline
+Include dependency graph for scene.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{scene_8cpp_a14278f14d38f8ead49f374b01ecf8327}{drawscene} ()
+\begin{DoxyCompactList}\small\item\em draws the scene \end{DoxyCompactList}\item 
+void \hyperlink{scene_8cpp_a689480b6614b8cee7655c0c36939e819}{initial\+Settings} ()
+\begin{DoxyCompactList}\small\item\em initial settings \end{DoxyCompactList}\item 
+void \hyperlink{scene_8cpp_a89cfa63bb4fd6099a58df6631e265d68}{display\+Function} ()
+\begin{DoxyCompactList}\small\item\em main display function \end{DoxyCompactList}\item 
+void \hyperlink{scene_8cpp_a12ed2a0dfdedb1b408a27a1b27fa5de7}{multiply\+Matrix} (G\+Lfloat $\ast$a, G\+Lfloat $\ast$b, G\+Lfloat $\ast$ans\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em to multiply 4x4 matrix \end{DoxyCompactList}\item 
+void \hyperlink{scene_8cpp_ae46096a08aa07fb05f6570b3f849014d}{get\+Column} (int rownum, G\+Lfloat $\ast$matrix, G\+Lfloat $\ast$ans\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em returns column from 4x4 matrix \end{DoxyCompactList}\item 
+void \hyperlink{scene_8cpp_a7d9dfd7e3b496a5af387503e5c97a24f}{reshape\+Function} (int w, int h)
+\begin{DoxyCompactList}\small\item\em replots the scene on window reshape \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+G\+Luint \hyperlink{scene_8cpp_a0704dfe56dec926cb35f7bdc0834ecd0}{texture}
+\begin{DoxyCompactList}\small\item\em to map the texute \end{DoxyCompactList}\item 
+const int \hyperlink{scene_8cpp_a010fd576f74bef5fe6129b1897719e91}{texture\+Width} =512
+\begin{DoxyCompactList}\small\item\em texture width \end{DoxyCompactList}\item 
+const int \hyperlink{scene_8cpp_a5e2e2ac3c69ad4cb3e22bffb1f0e0231}{texture\+Height} =512
+\begin{DoxyCompactList}\small\item\em texture height \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_a950ace1f467a5c6b78430167e78ac558}{black} \mbox{[}$\,$\mbox{]} =\{0.\+0f,0.\+0f,0.\+0f\}
+\begin{DoxyCompactList}\small\item\em defined the colour black \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_a02f41c42b3ecfc235f5013d6d2f609e4}{dimwhite} \mbox{[}$\,$\mbox{]} =\{0.\+1f,0.\+1f,0.\+1f\}
+\begin{DoxyCompactList}\small\item\em defined a dim shade of white \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_a84e8e0b188d4638a9a8170f67f2e69b1}{white} \mbox{[}$\,$\mbox{]} =\{1.\+0f,1.\+0f,1.\+0f\}
+\begin{DoxyCompactList}\small\item\em defined white colour \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_ad8dac7d0d75bce27747f673c0dbeba63}{shine} =30.\+0f
+\begin{DoxyCompactList}\small\item\em defined shine component for materials \end{DoxyCompactList}\item 
+G\+Luint \hyperlink{scene_8cpp_a1bca9f4a91464fef1632ec372c1b63bb}{win\+Width} =500
+\begin{DoxyCompactList}\small\item\em defined window width,height \end{DoxyCompactList}\item 
+G\+Luint \hyperlink{scene_8cpp_add81c73723dd1546da15b1d9db593929}{win\+Height} =500
+\item 
+G\+Lfloat \hyperlink{scene_8cpp_a007ebcbe2f4a56d317e6eb7ba17df0e6}{camera\+Projection} \mbox{[}16\mbox{]}
+\begin{DoxyCompactList}\small\item\em camera projection matrix \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_a32618a16505d18a8aa7f80cb14789722}{camera\+View} \mbox{[}16\mbox{]}
+\begin{DoxyCompactList}\small\item\em camera view matrix \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_a1c678bb2660ba18091438add28818eeb}{camera\+Position} \mbox{[}$\,$\mbox{]} =\{0.\+0f, 1.\+8f,-\/3.\+5f\}
+\begin{DoxyCompactList}\small\item\em camera position vector \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_acc6a1cea76c57efd2463eead3c4295ad}{light\+Projection} \mbox{[}16\mbox{]}
+\begin{DoxyCompactList}\small\item\em light projection matrix \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_abd38e271493072890d5afe59976a4aa4}{light\+View} \mbox{[}16\mbox{]}
+\begin{DoxyCompactList}\small\item\em ligth view matrix \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_abce1b4d524993b88aca06e26d9cc5e73}{light\+Position} \mbox{[}$\,$\mbox{]} =\{2.\+0f, 2.\+6f,-\/3.\+0f,0.\+0f\}
+\begin{DoxyCompactList}\small\item\em light position vector \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{scene_8cpp_a8a093542f595a49d7de0741d821b4eb9}{texture\+Bias} \mbox{[}$\,$\mbox{]} =\{0.\+5f, 0.\+0f, 0.\+0f, 0.\+0f,0.\+0f, 0.\+5f, 0.\+0f, 0.\+0f,0.\+0f, 0.\+0f, 0.\+5f, 0.\+0f,0.\+5f, 0.\+5f, 0.\+5f, 1.\+0f\}
+\begin{DoxyCompactList}\small\item\em texture bias to get the shadow \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{scene_8cpp_a89cfa63bb4fd6099a58df6631e265d68}\label{scene_8cpp_a89cfa63bb4fd6099a58df6631e265d68}} 
+\index{scene.\+cpp@{scene.\+cpp}!display\+Function@{display\+Function}}
+\index{display\+Function@{display\+Function}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{display\+Function()}{displayFunction()}}
+{\footnotesize\ttfamily void display\+Function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main display function 
+
+fucntion where all calculations / plotting takes place . The scene is plotted thrice with different settings to achieve the effect clear buffers
+
+set matrix to projection mode
+
+load light projection matrix
+
+set martix to model view
+
+load lightviewmatrix
+
+set viewport
+
+draw scene
+
+bind the texture geerated
+
+restore initial states
+
+clear depth buffer
+
+enable lighting
+
+drawscene
+
+lighting settings
+
+getting shadow texture
+
+applying texture
+
+applying texture
+
+applying texture
+
+applying texture
+
+applying texture
+
+Shadow comparison should be true (ie not in shadow) if r$<$=texture
+
+Shadow comparison should generate an I\+N\+T\+E\+N\+S\+I\+TY result \mbox{\Hypertarget{scene_8cpp_a14278f14d38f8ead49f374b01ecf8327}\label{scene_8cpp_a14278f14d38f8ead49f374b01ecf8327}} 
+\index{scene.\+cpp@{scene.\+cpp}!drawscene@{drawscene}}
+\index{drawscene@{drawscene}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{drawscene()}{drawscene()}}
+{\footnotesize\ttfamily void drawscene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+draws the scene 
+
+draws the scene all the components that have been drawn into the scene have been put here . Can add / remove anything without any hustle \mbox{\Hypertarget{scene_8cpp_ae46096a08aa07fb05f6570b3f849014d}\label{scene_8cpp_ae46096a08aa07fb05f6570b3f849014d}} 
+\index{scene.\+cpp@{scene.\+cpp}!get\+Column@{get\+Column}}
+\index{get\+Column@{get\+Column}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{get\+Column()}{getColumn()}}
+{\footnotesize\ttfamily void get\+Column (\begin{DoxyParamCaption}\item[{int}]{rownum,  }\item[{G\+Lfloat $\ast$}]{matrix,  }\item[{G\+Lfloat $\ast$}]{ans\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+returns column from 4x4 matrix 
+
+\mbox{\Hypertarget{scene_8cpp_a689480b6614b8cee7655c0c36939e819}\label{scene_8cpp_a689480b6614b8cee7655c0c36939e819}} 
+\index{scene.\+cpp@{scene.\+cpp}!initial\+Settings@{initial\+Settings}}
+\index{initial\+Settings@{initial\+Settings}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{initial\+Settings()}{initialSettings()}}
+{\footnotesize\ttfamily void initial\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+initial settings 
+
+display settings only to be called once sets matrix to modelview
+
+loads the identity matrix,clearing out garbage values
+
+enable smooth shading
+
+set clear colour
+
+set object colour
+
+clear depth buffer
+
+enable depth buffer
+
+specify depth function
+
+enable face culling
+
+enable normalization-\/set normal vector to unit length
+
+set textures-\/reference -\/ \href{https://learnopengl.com/Getting-started/Textures}{\tt https\+://learnopengl.\+com/\+Getting-\/started/\+Textures}
+
+enable material colouring
+
+specify material colouring
+
+set material colour attribute
+
+set material colour attribute
+
+push matrix to stack
+
+clear previous values
+
+get cameraprojection matrix
+
+get camera view matrix
+
+get light projection matrix
+
+get light view matrix \mbox{\Hypertarget{scene_8cpp_a12ed2a0dfdedb1b408a27a1b27fa5de7}\label{scene_8cpp_a12ed2a0dfdedb1b408a27a1b27fa5de7}} 
+\index{scene.\+cpp@{scene.\+cpp}!multiply\+Matrix@{multiply\+Matrix}}
+\index{multiply\+Matrix@{multiply\+Matrix}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{multiply\+Matrix()}{multiplyMatrix()}}
+{\footnotesize\ttfamily void multiply\+Matrix (\begin{DoxyParamCaption}\item[{G\+Lfloat $\ast$}]{a,  }\item[{G\+Lfloat $\ast$}]{b,  }\item[{G\+Lfloat $\ast$}]{ans\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+to multiply 4x4 matrix 
+
+function to multiply 4x4 matrix which is needed in display function \mbox{\Hypertarget{scene_8cpp_a7d9dfd7e3b496a5af387503e5c97a24f}\label{scene_8cpp_a7d9dfd7e3b496a5af387503e5c97a24f}} 
+\index{scene.\+cpp@{scene.\+cpp}!reshape\+Function@{reshape\+Function}}
+\index{reshape\+Function@{reshape\+Function}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{reshape\+Function()}{reshapeFunction()}}
+{\footnotesize\ttfamily void reshape\+Function (\begin{DoxyParamCaption}\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+replots the scene on window reshape 
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{scene_8cpp_a950ace1f467a5c6b78430167e78ac558}\label{scene_8cpp_a950ace1f467a5c6b78430167e78ac558}} 
+\index{scene.\+cpp@{scene.\+cpp}!black@{black}}
+\index{black@{black}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{black}{black}}
+{\footnotesize\ttfamily G\+Lfloat black\mbox{[}$\,$\mbox{]} =\{0.\+0f,0.\+0f,0.\+0f\}}
+
+
+
+defined the colour black 
+
+\mbox{\Hypertarget{scene_8cpp_a1c678bb2660ba18091438add28818eeb}\label{scene_8cpp_a1c678bb2660ba18091438add28818eeb}} 
+\index{scene.\+cpp@{scene.\+cpp}!camera\+Position@{camera\+Position}}
+\index{camera\+Position@{camera\+Position}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{camera\+Position}{cameraPosition}}
+{\footnotesize\ttfamily G\+Lfloat camera\+Position\mbox{[}$\,$\mbox{]} =\{0.\+0f, 1.\+8f,-\/3.\+5f\}}
+
+
+
+camera position vector 
+
+\mbox{\Hypertarget{scene_8cpp_a007ebcbe2f4a56d317e6eb7ba17df0e6}\label{scene_8cpp_a007ebcbe2f4a56d317e6eb7ba17df0e6}} 
+\index{scene.\+cpp@{scene.\+cpp}!camera\+Projection@{camera\+Projection}}
+\index{camera\+Projection@{camera\+Projection}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{camera\+Projection}{cameraProjection}}
+{\footnotesize\ttfamily G\+Lfloat camera\+Projection\mbox{[}16\mbox{]}}
+
+
+
+camera projection matrix 
+
+\mbox{\Hypertarget{scene_8cpp_a32618a16505d18a8aa7f80cb14789722}\label{scene_8cpp_a32618a16505d18a8aa7f80cb14789722}} 
+\index{scene.\+cpp@{scene.\+cpp}!camera\+View@{camera\+View}}
+\index{camera\+View@{camera\+View}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{camera\+View}{cameraView}}
+{\footnotesize\ttfamily G\+Lfloat camera\+View\mbox{[}16\mbox{]}}
+
+
+
+camera view matrix 
+
+\mbox{\Hypertarget{scene_8cpp_a02f41c42b3ecfc235f5013d6d2f609e4}\label{scene_8cpp_a02f41c42b3ecfc235f5013d6d2f609e4}} 
+\index{scene.\+cpp@{scene.\+cpp}!dimwhite@{dimwhite}}
+\index{dimwhite@{dimwhite}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{dimwhite}{dimwhite}}
+{\footnotesize\ttfamily G\+Lfloat dimwhite\mbox{[}$\,$\mbox{]} =\{0.\+1f,0.\+1f,0.\+1f\}}
+
+
+
+defined a dim shade of white 
+
+\mbox{\Hypertarget{scene_8cpp_abce1b4d524993b88aca06e26d9cc5e73}\label{scene_8cpp_abce1b4d524993b88aca06e26d9cc5e73}} 
+\index{scene.\+cpp@{scene.\+cpp}!light\+Position@{light\+Position}}
+\index{light\+Position@{light\+Position}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{light\+Position}{lightPosition}}
+{\footnotesize\ttfamily G\+Lfloat light\+Position\mbox{[}$\,$\mbox{]} =\{2.\+0f, 2.\+6f,-\/3.\+0f,0.\+0f\}}
+
+
+
+light position vector 
+
+\mbox{\Hypertarget{scene_8cpp_acc6a1cea76c57efd2463eead3c4295ad}\label{scene_8cpp_acc6a1cea76c57efd2463eead3c4295ad}} 
+\index{scene.\+cpp@{scene.\+cpp}!light\+Projection@{light\+Projection}}
+\index{light\+Projection@{light\+Projection}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{light\+Projection}{lightProjection}}
+{\footnotesize\ttfamily G\+Lfloat light\+Projection\mbox{[}16\mbox{]}}
+
+
+
+light projection matrix 
+
+\mbox{\Hypertarget{scene_8cpp_abd38e271493072890d5afe59976a4aa4}\label{scene_8cpp_abd38e271493072890d5afe59976a4aa4}} 
+\index{scene.\+cpp@{scene.\+cpp}!light\+View@{light\+View}}
+\index{light\+View@{light\+View}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{light\+View}{lightView}}
+{\footnotesize\ttfamily G\+Lfloat light\+View\mbox{[}16\mbox{]}}
+
+
+
+ligth view matrix 
+
+\mbox{\Hypertarget{scene_8cpp_ad8dac7d0d75bce27747f673c0dbeba63}\label{scene_8cpp_ad8dac7d0d75bce27747f673c0dbeba63}} 
+\index{scene.\+cpp@{scene.\+cpp}!shine@{shine}}
+\index{shine@{shine}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{shine}{shine}}
+{\footnotesize\ttfamily G\+Lfloat shine =30.\+0f}
+
+
+
+defined shine component for materials 
+
+\mbox{\Hypertarget{scene_8cpp_a0704dfe56dec926cb35f7bdc0834ecd0}\label{scene_8cpp_a0704dfe56dec926cb35f7bdc0834ecd0}} 
+\index{scene.\+cpp@{scene.\+cpp}!texture@{texture}}
+\index{texture@{texture}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{texture}{texture}}
+{\footnotesize\ttfamily G\+Luint texture}
+
+
+
+to map the texute 
+
+\mbox{\Hypertarget{scene_8cpp_a8a093542f595a49d7de0741d821b4eb9}\label{scene_8cpp_a8a093542f595a49d7de0741d821b4eb9}} 
+\index{scene.\+cpp@{scene.\+cpp}!texture\+Bias@{texture\+Bias}}
+\index{texture\+Bias@{texture\+Bias}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{texture\+Bias}{textureBias}}
+{\footnotesize\ttfamily G\+Lfloat texture\+Bias\mbox{[}$\,$\mbox{]} =\{0.\+5f, 0.\+0f, 0.\+0f, 0.\+0f,0.\+0f, 0.\+5f, 0.\+0f, 0.\+0f,0.\+0f, 0.\+0f, 0.\+5f, 0.\+0f,0.\+5f, 0.\+5f, 0.\+5f, 1.\+0f\}}
+
+
+
+texture bias to get the shadow 
+
+\mbox{\Hypertarget{scene_8cpp_a5e2e2ac3c69ad4cb3e22bffb1f0e0231}\label{scene_8cpp_a5e2e2ac3c69ad4cb3e22bffb1f0e0231}} 
+\index{scene.\+cpp@{scene.\+cpp}!texture\+Height@{texture\+Height}}
+\index{texture\+Height@{texture\+Height}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{texture\+Height}{textureHeight}}
+{\footnotesize\ttfamily const int texture\+Height =512}
+
+
+
+texture height 
+
+\mbox{\Hypertarget{scene_8cpp_a010fd576f74bef5fe6129b1897719e91}\label{scene_8cpp_a010fd576f74bef5fe6129b1897719e91}} 
+\index{scene.\+cpp@{scene.\+cpp}!texture\+Width@{texture\+Width}}
+\index{texture\+Width@{texture\+Width}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{texture\+Width}{textureWidth}}
+{\footnotesize\ttfamily const int texture\+Width =512}
+
+
+
+texture width 
+
+\mbox{\Hypertarget{scene_8cpp_a84e8e0b188d4638a9a8170f67f2e69b1}\label{scene_8cpp_a84e8e0b188d4638a9a8170f67f2e69b1}} 
+\index{scene.\+cpp@{scene.\+cpp}!white@{white}}
+\index{white@{white}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{white}{white}}
+{\footnotesize\ttfamily G\+Lfloat white\mbox{[}$\,$\mbox{]} =\{1.\+0f,1.\+0f,1.\+0f\}}
+
+
+
+defined white colour 
+
+\mbox{\Hypertarget{scene_8cpp_add81c73723dd1546da15b1d9db593929}\label{scene_8cpp_add81c73723dd1546da15b1d9db593929}} 
+\index{scene.\+cpp@{scene.\+cpp}!win\+Height@{win\+Height}}
+\index{win\+Height@{win\+Height}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{win\+Height}{winHeight}}
+{\footnotesize\ttfamily G\+Luint win\+Height =500}
+
+\mbox{\Hypertarget{scene_8cpp_a1bca9f4a91464fef1632ec372c1b63bb}\label{scene_8cpp_a1bca9f4a91464fef1632ec372c1b63bb}} 
+\index{scene.\+cpp@{scene.\+cpp}!win\+Width@{win\+Width}}
+\index{win\+Width@{win\+Width}!scene.\+cpp@{scene.\+cpp}}
+\subsubsection{\texorpdfstring{win\+Width}{winWidth}}
+{\footnotesize\ttfamily G\+Luint win\+Width =500}
+
+
+
+defined window width,height 
+

@@ -1,0 +1,35 @@
+\hypertarget{main_8cpp}{}\section{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.\+cpp@{main.\+cpp}}
+{\ttfamily \#include \char`\"{}scene.\+h\char`\"{}}\newline
+Include dependency graph for main.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8cpp_a358cd8442950f0382b04cdb0841a4e39}{keypress} (unsigned char key, int x, int y)
+\begin{DoxyCompactList}\small\item\em processes keyboard input checks for keyboard input and takes action accordingly. currently not set to store states but can by using a boolean array. \end{DoxyCompactList}\item 
+int \hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em main function main function for the program . contains standard glut initialization functions. idle function is not used / glutredisplay() can be used instead if required. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a358cd8442950f0382b04cdb0841a4e39}\label{main_8cpp_a358cd8442950f0382b04cdb0841a4e39}} 
+\index{main.\+cpp@{main.\+cpp}!keypress@{keypress}}
+\index{keypress@{keypress}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{keypress()}{keypress()}}
+{\footnotesize\ttfamily void keypress (\begin{DoxyParamCaption}\item[{unsigned char}]{key,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+processes keyboard input checks for keyboard input and takes action accordingly. currently not set to store states but can by using a boolean array. 
+
+exits/quits on press of key \textquotesingle{}q\textquotesingle{} \mbox{\Hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+main function main function for the program . contains standard glut initialization functions. idle function is not used / glutredisplay() can be used instead if required. 
+

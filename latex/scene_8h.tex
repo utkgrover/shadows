@@ -1,0 +1,167 @@
+\hypertarget{scene_8h}{}\section{scene.\+h File Reference}
+\label{scene_8h}\index{scene.\+h@{scene.\+h}}
+{\ttfamily \#include $<$G\+L/glut.\+h$>$}\newline
+Include dependency graph for scene.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{scene_8h_a14278f14d38f8ead49f374b01ecf8327}{drawscene} ()
+\begin{DoxyCompactList}\small\item\em draws the scene all the components that have been drawn into the scene have been put here . Can add / remove anything without any hustle \end{DoxyCompactList}\item 
+void \hyperlink{scene_8h_a689480b6614b8cee7655c0c36939e819}{initial\+Settings} ()
+\begin{DoxyCompactList}\small\item\em display settings only to be called once \end{DoxyCompactList}\item 
+void \hyperlink{scene_8h_a89cfa63bb4fd6099a58df6631e265d68}{display\+Function} ()
+\begin{DoxyCompactList}\small\item\em main display function \end{DoxyCompactList}\item 
+void \hyperlink{scene_8h_a12ed2a0dfdedb1b408a27a1b27fa5de7}{multiply\+Matrix} (G\+Lfloat $\ast$a, G\+Lfloat $\ast$b, G\+Lfloat $\ast$ans\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em to multiply 4x4 matrix \end{DoxyCompactList}\item 
+void \hyperlink{scene_8h_ae46096a08aa07fb05f6570b3f849014d}{get\+Column} (int rownum, G\+Lfloat $\ast$matrix, G\+Lfloat $\ast$ans\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em returns column from 4x4 matrix \end{DoxyCompactList}\item 
+void \hyperlink{scene_8h_ab117dc474c1d25c8621e7718a6a506b1}{reshape\+Function} (int, int)
+\begin{DoxyCompactList}\small\item\em replots the scene on window reshape \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{scene_8h_a89cfa63bb4fd6099a58df6631e265d68}\label{scene_8h_a89cfa63bb4fd6099a58df6631e265d68}} 
+\index{scene.\+h@{scene.\+h}!display\+Function@{display\+Function}}
+\index{display\+Function@{display\+Function}!scene.\+h@{scene.\+h}}
+\subsubsection{\texorpdfstring{display\+Function()}{displayFunction()}}
+{\footnotesize\ttfamily void display\+Function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main display function 
+
+fucntion where all calculations / plotting takes place . The scene is plotted thrice with different settings to achieve the effect clear buffers
+
+set matrix to projection mode
+
+load light projection matrix
+
+set martix to model view
+
+load lightviewmatrix
+
+set viewport
+
+draw scene
+
+bind the texture geerated
+
+restore initial states
+
+clear depth buffer
+
+enable lighting
+
+drawscene
+
+lighting settings
+
+getting shadow texture
+
+applying texture
+
+applying texture
+
+applying texture
+
+applying texture
+
+applying texture
+
+Shadow comparison should be true (ie not in shadow) if r$<$=texture
+
+Shadow comparison should generate an I\+N\+T\+E\+N\+S\+I\+TY result \mbox{\Hypertarget{scene_8h_a14278f14d38f8ead49f374b01ecf8327}\label{scene_8h_a14278f14d38f8ead49f374b01ecf8327}} 
+\index{scene.\+h@{scene.\+h}!drawscene@{drawscene}}
+\index{drawscene@{drawscene}!scene.\+h@{scene.\+h}}
+\subsubsection{\texorpdfstring{drawscene()}{drawscene()}}
+{\footnotesize\ttfamily void drawscene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+draws the scene all the components that have been drawn into the scene have been put here . Can add / remove anything without any hustle 
+
+draws the scene all the components that have been drawn into the scene have been put here . Can add / remove anything without any hustle \mbox{\Hypertarget{scene_8h_ae46096a08aa07fb05f6570b3f849014d}\label{scene_8h_ae46096a08aa07fb05f6570b3f849014d}} 
+\index{scene.\+h@{scene.\+h}!get\+Column@{get\+Column}}
+\index{get\+Column@{get\+Column}!scene.\+h@{scene.\+h}}
+\subsubsection{\texorpdfstring{get\+Column()}{getColumn()}}
+{\footnotesize\ttfamily void get\+Column (\begin{DoxyParamCaption}\item[{int}]{rownum,  }\item[{G\+Lfloat $\ast$}]{matrix,  }\item[{G\+Lfloat $\ast$}]{ans\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+returns column from 4x4 matrix 
+
+\mbox{\Hypertarget{scene_8h_a689480b6614b8cee7655c0c36939e819}\label{scene_8h_a689480b6614b8cee7655c0c36939e819}} 
+\index{scene.\+h@{scene.\+h}!initial\+Settings@{initial\+Settings}}
+\index{initial\+Settings@{initial\+Settings}!scene.\+h@{scene.\+h}}
+\subsubsection{\texorpdfstring{initial\+Settings()}{initialSettings()}}
+{\footnotesize\ttfamily void initial\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+display settings only to be called once 
+
+display settings that only need to be called once or any form id declarion is kept here stuff can be added or removed if needed , eg -\/ smooth shading can be changed to flat for faster refresh rate
+
+display settings only to be called once sets matrix to modelview
+
+loads the identity matrix,clearing out garbage values
+
+enable smooth shading
+
+set clear colour
+
+set object colour
+
+clear depth buffer
+
+enable depth buffer
+
+specify depth function
+
+enable face culling
+
+enable normalization-\/set normal vector to unit length
+
+set textures-\/reference -\/ \href{https://learnopengl.com/Getting-started/Textures}{\tt https\+://learnopengl.\+com/\+Getting-\/started/\+Textures}
+
+enable material colouring
+
+specify material colouring
+
+set material colour attribute
+
+set material colour attribute
+
+push matrix to stack
+
+clear previous values
+
+get cameraprojection matrix
+
+get camera view matrix
+
+get light projection matrix
+
+get light view matrix \mbox{\Hypertarget{scene_8h_a12ed2a0dfdedb1b408a27a1b27fa5de7}\label{scene_8h_a12ed2a0dfdedb1b408a27a1b27fa5de7}} 
+\index{scene.\+h@{scene.\+h}!multiply\+Matrix@{multiply\+Matrix}}
+\index{multiply\+Matrix@{multiply\+Matrix}!scene.\+h@{scene.\+h}}
+\subsubsection{\texorpdfstring{multiply\+Matrix()}{multiplyMatrix()}}
+{\footnotesize\ttfamily void multiply\+Matrix (\begin{DoxyParamCaption}\item[{G\+Lfloat $\ast$}]{a,  }\item[{G\+Lfloat $\ast$}]{b,  }\item[{G\+Lfloat $\ast$}]{ans\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+to multiply 4x4 matrix 
+
+function to multiply 4x4 matrix which is needed in display function \mbox{\Hypertarget{scene_8h_ab117dc474c1d25c8621e7718a6a506b1}\label{scene_8h_ab117dc474c1d25c8621e7718a6a506b1}} 
+\index{scene.\+h@{scene.\+h}!reshape\+Function@{reshape\+Function}}
+\index{reshape\+Function@{reshape\+Function}!scene.\+h@{scene.\+h}}
+\subsubsection{\texorpdfstring{reshape\+Function()}{reshapeFunction()}}
+{\footnotesize\ttfamily void reshape\+Function (\begin{DoxyParamCaption}\item[{int}]{,  }\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+replots the scene on window reshape 
+
