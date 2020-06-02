@@ -2,27 +2,6 @@
 #include<iostream>
 using namespace std;
 
-GLuint texture;
-const int textureWidth=512;
-const int textureHeight=512;
-
-GLfloat black[]={0.0f,0.0f,0.0f};
-GLfloat dimwhite[]={0.1f,0.1f,0.1f};
-GLfloat white[]={1.0f,1.0f,1.0f};
-GLfloat shine=30.0f;
-
-GLuint winWidth=500,winHeight=500;
-
-GLfloat cameraProjection[16];
-GLfloat cameraView[16];
-GLfloat cameraPosition[]={0.0f, 1.8f,-3.5f};
-
-GLfloat lightProjection[16];
-GLfloat lightView[16];
-GLfloat lightPosition[]={2.0f, 2.6f,-3.0f,0.0f}; 
-
-GLfloat textureBias[]={0.5f, 0.0f, 0.0f, 0.0f,0.0f, 0.5f, 0.0f, 0.0f,0.0f, 0.0f, 0.5f, 0.0f,0.5f, 0.5f, 0.5f, 1.0f};
-
 void drawscene2(){
     glColor3f(0.0f, 0.0f, 1.0f);
     glPushMatrix();
@@ -260,7 +239,7 @@ void getRow(int rownum ,GLfloat* matrix,GLfloat* ans[]){
     for(int i=0;i<4;i++) (*ans)[i] = matrix[4*i+rownum];
 }
 
-void reshapeFunction(int w, int h) {
+void Scene::reshapeFunction(int w, int h) {
 	winWidth = w, winHeight = h;
 	glPushMatrix();
 	glLoadIdentity();
