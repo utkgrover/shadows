@@ -23,6 +23,25 @@ GLfloat lightPosition[]={2.0f, 2.6f,-3.0f,0.0f};
 
 GLfloat textureBias[]={0.5f, 0.0f, 0.0f, 0.0f,0.0f, 0.5f, 0.0f, 0.0f,0.0f, 0.0f, 0.5f, 0.0f,0.5f, 0.5f, 0.5f, 1.0f};
 
+void drawscene2(){
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glPushMatrix();
+
+    glScalef(1.0f, 0.05f, 1.0f);
+    glutSolidCube(3.0f);
+
+    glPopMatrix();
+
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glPushMatrix();
+
+    glTranslatef(0.0f, 0.5f, 0.0f);
+    glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
+    glutSolidTorus(0.2, 0.5, 24, 48);
+
+    glPopMatrix();
+}
+
 void drawscene(){
     int angle=4;
 
@@ -51,7 +70,7 @@ void drawscene(){
     glPopMatrix();
 }
 
-void initialSettings(){
+void Scene::initialSettings(){
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
@@ -70,7 +89,7 @@ void initialSettings(){
     // set normal vector to unit length 
     glEnable(GL_NORMALIZE);
 
-    // set textures
+    // generate a null texture
     // reference - https://learnopengl.com/Getting-started/Textures
     glGenTextures(1,&texture);
     glBindTexture(GL_TEXTURE_2D,texture);
@@ -109,7 +128,7 @@ void initialSettings(){
 	glPopMatrix();    
 }
 
-void displayFunction(){
+void Scene::displayFunction(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode(GL_PROJECTION);
@@ -124,7 +143,7 @@ void displayFunction(){
     glColorMask(0, 0, 0, 0);
 
     //change the scene
-    drawscene();
+    drawscene2();
 
     glBindTexture(GL_TEXTURE_2D,texture);
     glCopyTexSubImage2D(GL_TEXTURE_2D,0,0,0,0,0,textureWidth,textureHeight);
@@ -152,7 +171,7 @@ void displayFunction(){
 	glEnable(GL_LIGHT1);
 	glEnable(GL_LIGHTING);
 
-    drawscene();
+    drawscene2();
     
     glLightfv(GL_LIGHT1, GL_DIFFUSE, white);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, white);
@@ -195,7 +214,7 @@ void displayFunction(){
     glAlphaFunc(GL_GEQUAL, 0.99f);
 	glEnable(GL_ALPHA_TEST);
 
-    drawscene();
+    drawscene2();
 
     glDisable(GL_TEXTURE_2D);
 

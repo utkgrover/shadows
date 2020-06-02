@@ -1,5 +1,11 @@
 #include "scene.h"
 
+Scene s;
+
+void display(){
+	s.displayFunction();
+}
+
 void keypress(unsigned char key,int x,int y){
 	if(key=='q') exit(0);
 }
@@ -9,8 +15,9 @@ int main(int argc, char** argv){
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(500,500);
 	glutCreateWindow("Display Window");
-	initialSettings();
-    glutDisplayFunc(displayFunction);
+
+	s.initialSettings();
+    glutDisplayFunc(display);
 	glutReshapeFunc(reshapeFunction);
 	glutKeyboardFunc(keypress);
 	glutMainLoop();
