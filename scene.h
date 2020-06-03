@@ -16,11 +16,11 @@ private:
         
     GLfloat cameraProjection[16];
     GLfloat cameraView[16];
-    GLfloat cameraPosition[3]={0.0f, 1.8f,-3.5f};
+    GLfloat cameraPosition[3]={-2.5f, 3.5f,-2.5f};
 
     GLfloat lightProjection[16];
     GLfloat lightView[16];
-    GLfloat lightPosition[4]={2.0f, 2.6f,-3.0f,0.0f}; 
+    GLfloat lightPosition[4]={3.0f, 4.0f,-2.5f}; 
 
     GLfloat textureBias[16]={0.5f, 0.0f, 0.0f, 0.0f,0.0f, 0.5f, 0.0f, 0.0f,0.0f, 0.0f, 0.5f, 0.0f,0.5f, 0.5f, 0.5f, 1.0f};
 
@@ -33,10 +33,7 @@ public:
 };
 
 void drawscene();
-//void initialSettings();
-//void displayFunction();
 void multiplyMatrix(GLfloat* a,GLfloat* b,GLfloat* ans[]);
 void getRow(int rownum ,GLfloat* matrix,GLfloat* ans[]);
-
 
 #endif
