@@ -1,52 +1,12 @@
 #include "scene.h"
+#include "draw.h"
 #include<iostream>
 using namespace std;
 
-void drawscene2(){
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glPushMatrix();
+Draw d;
 
-    glScalef(1.0f, 0.05f, 1.0f);
-    glutSolidCube(3.0f);
-
-    glPopMatrix();
-
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glPushMatrix();
-
-    glTranslatef(0.0f, 0.5f, 0.0f);
-    glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
-    glutSolidTorus(0.2, 0.5, 24, 48);
-
-    glPopMatrix();
-}
-
-void drawscene(){
-    int angle=4;
-
-    glPushMatrix();
-    glColor3f(0.4f, 0.3f, 0.3f);
-    glTranslatef(0.0f, 0.0f, 1.0f);
-    glScalef(0.95f, 0.05f, 0.95f);
-    glutSolidCube(5.0f);
-    glPopMatrix();
-    glPushMatrix();
-
-    // red torus
-    glColor3f(1.0f, 0.3f, 0.3f);
-    glTranslatef(0.0f, 1.0f, 0.0f);
-    glRotatef(angle, 0.0f, 1.0f, 1.0f);
-    glPushMatrix();
-    glutSolidTorus(0.1, 0.3, 50, 50);
-    glPopMatrix();
-
-    // yellow torus
-    glRotatef(angle + 60, 1.0f, 0.0f, 0.0f);
-    glColor3f(1.2f, 0.8f, 0.4f);
-    glutSolidCube(0.2f);
-
-    glPopMatrix();
-    glPopMatrix();
+void drawfunc(){
+    d.display2();
 }
 
 void Scene::initialSettings(){
@@ -122,7 +82,7 @@ void Scene::displayFunction(){
     glColorMask(0, 0, 0, 0);
 
     //change the scene
-    drawscene2();
+    drawfunc();
 
     glBindTexture(GL_TEXTURE_2D,texture);
     glCopyTexSubImage2D(GL_TEXTURE_2D,0,0,0,0,0,textureWidth,textureHeight);
@@ -150,7 +110,7 @@ void Scene::displayFunction(){
 	glEnable(GL_LIGHT1);
 	glEnable(GL_LIGHTING);
 
-    drawscene2();
+    drawfunc();
     
     glLightfv(GL_LIGHT1, GL_DIFFUSE, white);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, white);
@@ -193,7 +153,7 @@ void Scene::displayFunction(){
     glAlphaFunc(GL_GEQUAL, 0.99f);
 	glEnable(GL_ALPHA_TEST);
 
-    drawscene2();
+    drawfunc();
 
     glDisable(GL_TEXTURE_2D);
 

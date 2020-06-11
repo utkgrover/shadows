@@ -1,7 +1,7 @@
 CC=g++
 
-main: scene.cpp scene.h main.cpp
-	$(CC) scene.cpp main.cpp -o main  -lGL -lglut -lGLU -lm
+main: draw.h draw.cpp scene.cpp scene.h main.cpp
+	$(CC) draw.cpp scene.cpp main.cpp -o main  -lGL -lglut -lGLU -lm
 
 clean:
 	rm -rf *.o
