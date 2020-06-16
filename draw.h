@@ -6,7 +6,7 @@ class Draw{
 public:
     void display1();
     void display2();
-    void display3();
+    //void display3();
 };
 
 

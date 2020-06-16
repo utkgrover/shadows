@@ -39,14 +39,14 @@ void Scene::initialSettings(){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);//try gl_nearest
     
+
+    // reference - https://cs.brynmawr.edu/Courses/cs312/fall2010/lectures/gl_05.pdf
 	glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
 	glMaterialf(GL_FRONT, GL_SHININESS , shine);
 
-	// push matrix to stack 
 	glPushMatrix();
-
 
     glLoadIdentity();
     gluPerspective(45.0f, (float)winWidth/winHeight, 1.0f, 100.0f);
@@ -76,6 +76,7 @@ void Scene::displayFunction(){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixf(lightView);
 
+    //use viewport same as the size of texture map,easy mapping
     glViewport(0,0,textureWidth,textureHeight);
     glCullFace(GL_FRONT);
     glShadeModel(GL_FLAT);
@@ -84,6 +85,7 @@ void Scene::displayFunction(){
     //change the scene
     drawfunc();
 
+    //copies the depth buffer into the texture 
     glBindTexture(GL_TEXTURE_2D,texture);
     glCopyTexSubImage2D(GL_TEXTURE_2D,0,0,0,0,0,textureWidth,textureHeight);
 
